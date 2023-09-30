@@ -3,8 +3,7 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Colors } from '../constants'
 
-import { SingIn } from '../screens/auth';
-import { OnboardingPage } from '../screens/stack';
+import { OnboardingPage, SingIn } from '../screens/auth';
 
 const Stack = createNativeStackNavigator();
 

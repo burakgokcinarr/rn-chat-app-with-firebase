@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 import NavigationRouter from './src/navigation/NavigationRouter';
-import { FontLoader } from './src/config/fontLoader';
+import { FontLoader } from './src/config/FontLoader';
 // Init i18n
 import i18n from './src/localization/i18n';
 
