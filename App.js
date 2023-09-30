@@ -1,21 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import NavigationRouter from './src/navigation/NavigationRouter';
+import { FontLoader } from './src/config/fontLoader';
+// Init i18n
+import i18n from './src/localization/i18n';
 
 export default function App() {
+
+  const [fontsLoaded] = useFonts(FontLoader);
+
+  if (!fontsLoaded) {
+    return null;
+  } 
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Text>{process.env.EXPO_PUBLIC_API_KEY}</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationRouter/>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
