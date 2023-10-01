@@ -3,9 +3,9 @@ import React from 'react'
 import { Colors, Font } from '../constants';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-export default function CustomButton({ title = "", onPress={onPress} }) {
+export default function CustomButton({ title = "", onPress={onPress}, customStyle = {}}) {
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity style={[styles.container, customStyle]} onPress={onPress}>
         <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   )

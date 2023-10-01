@@ -4,26 +4,26 @@ import { Font, Colors } from '../../constants'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useNavigation } from '@react-navigation/native';
 import { CustomInput, CustomButton } from '../../components';
-import { AntDesign, Octicons } from '@expo/vector-icons';
+import { AntDesign, Octicons, Entypo } from '@expo/vector-icons';
 import { auth } from '../../config/firebaseConfig';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
-export default function SingIn() {
+export default function SingUp() {
 
-  const navigation = useNavigation();
+  const navigation              = useNavigation();
   const [mail, setMail]         = useState(null);
   const [password, setPassword] = useState(null)
-
-  const onSingIn = () => {
-    
-  }
+  const [name, setName]         = useState(null)
 
   const onSingUp = () => {
-    navigation.navigate('singup');
-  }
-
-  const forgotPassword = () => {
-    
+    createUserWithEmailAndPassword(auth, mail, password)
+    .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user)
+    })
+    .catch((error) => {
+        alert(error)
+    });
   }
 
   return (
@@ -31,10 +31,7 @@ export default function SingIn() {
       <View style={styles.card}>
         <CustomInput placeholderText='E-Posta' setText={setMail} icon={<AntDesign name="mail" size={wp(5)} color={Colors.WHITE_COLOR} />}/>
         <CustomInput placeholderText='Şifre' setText={setPassword} icon={<Octicons name="key" size={wp(5)} color={Colors.WHITE_COLOR} />} secure={true}/>
-        <CustomButton title='Giriş Yap' onPress={onSingIn}/>
-        <TouchableOpacity onPress={forgotPassword}>
-          <Text style={styles.account}>Şifremi Unuttum</Text>
-        </TouchableOpacity>
+        <CustomInput placeholderText='Name' setText={setName} icon={<Entypo name="pencil" size={wp(5)} color={Colors.WHITE_COLOR} />} />
         <CustomButton title='Kayıt Ol' onPress={onSingUp} customStyle={{backgroundColor: Colors.BLUE_COLOR}}/>
       </View>
     </View>

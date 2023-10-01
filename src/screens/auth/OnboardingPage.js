@@ -23,7 +23,7 @@ import { useNavigation } from '@react-navigation/native';
         {
           title: t("page_2_title"),
           subtitle: t("page_2_subtitle"),
-          imageUri: 'https://previews.123rf.com/images/grasycho/grasycho1405/grasycho140500011/28497265-speech-bubble-shaped-word-cloud-chat-concept.jpg',
+          imageUri: 'https://www.pngmart.com/files/16/Speech-Chat-Icon-Transparent-PNG.png',
           primaryButtonTitle: t("start"),
           titleStyle: {fontFamily: Font.bold, fontSize: wp(9), color: Colors.PURPLE_COLOR},
           subtitleStyle: {fontFamily: Font.regular, fontSize: wp(5), color: Colors.DARK_COLOR}
