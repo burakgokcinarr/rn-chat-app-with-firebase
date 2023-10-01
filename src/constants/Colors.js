@@ -7,6 +7,7 @@ const GREEN_COLOR    = "#2ECC71";
 const BLUE_COLOR     = "#9db1f7";
 const GRAY_COLOR     = "#999999";
 const PURPLE_COLOR   = "#63445b";
+const BLACK_COLOR_2  = "#262626";
 
 export default {
     BG_COLOR,
@@ -17,5 +18,6 @@ export default {
     GREEN_COLOR,
     BLUE_COLOR,
     GRAY_COLOR,
-    PURPLE_COLOR
+    PURPLE_COLOR,
+    BLACK_COLOR_2
 }

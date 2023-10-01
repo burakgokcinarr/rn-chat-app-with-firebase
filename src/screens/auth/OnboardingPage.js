@@ -29,7 +29,7 @@ import { useNavigation } from '@react-navigation/native';
           subtitleStyle: {fontFamily: Font.regular, fontSize: wp(5), color: Colors.DARK_COLOR}
         }
       ]}
-      type={'fullscreen'}
+      type={'inline'}
       onDone={() => navigation.navigate("singin")}
       enableScroll={true}
       showDismissButton={false}
