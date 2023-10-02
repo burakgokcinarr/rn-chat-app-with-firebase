@@ -18,7 +18,7 @@ import { useNavigation } from '@react-navigation/native';
           imageUri: 'https://www.relativity.com/relativity/cache/file/40E7EF01-34FC-40BA-871A12D845CD2CA1.png',
           primaryButtonTitle: t("next"),
           titleStyle: {fontFamily: Font.bold, fontSize: wp(9), color: Colors.PURPLE_COLOR},
-          subtitleStyle: {fontFamily: Font.regular, fontSize: wp(5), color: Colors.DARK_COLOR},
+          subtitleStyle: {fontFamily: Font.regular, fontSize: wp(4), color: Colors.DARK_COLOR},
         },
         {
           title: t("page_2_title"),
@@ -26,7 +26,7 @@ import { useNavigation } from '@react-navigation/native';
           imageUri: 'https://www.pngmart.com/files/16/Speech-Chat-Icon-Transparent-PNG.png',
           primaryButtonTitle: t("start"),
           titleStyle: {fontFamily: Font.bold, fontSize: wp(9), color: Colors.PURPLE_COLOR},
-          subtitleStyle: {fontFamily: Font.regular, fontSize: wp(5), color: Colors.DARK_COLOR}
+          subtitleStyle: {fontFamily: Font.regular, fontSize: wp(4), color: Colors.DARK_COLOR}
         }
       ]}
       type={'inline'}

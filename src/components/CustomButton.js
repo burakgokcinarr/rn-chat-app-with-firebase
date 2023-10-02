@@ -16,13 +16,13 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor: Colors.WHITE_COLOR,
         marginTop: 15,
-        width: wp(40),
+        width: wp(35),
         padding: 10,
-        borderRadius: wp(10)
+        borderRadius: wp(2)
     },
     text: {
         textAlign: 'center',
         fontFamily: Font.medium,
-        fontSize: wp(5)
+        fontSize: wp(4)
     }
 })
