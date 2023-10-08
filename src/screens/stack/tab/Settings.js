@@ -3,6 +3,9 @@ import React from 'react'
 import { auth } from '../../../config/firebaseConfig'
 import { signOut } from 'firebase/auth'
 import { useNavigation } from '@react-navigation/native'
+import { CustomButton } from '../../../components'
+import { Colors, Font } from '../../../constants';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default function Settings() {
 
@@ -15,14 +18,27 @@ export default function Settings() {
   }
 
   return (
-    <View>
-      <Text>{auth.currentUser.displayName}</Text>
-      <Button
-        title='Log out'
-        onPress={logout}
-      />
+    <View style={styles.container}>
+        <Text style={styles.title}>{auth.currentUser.displayName}</Text>
+        <Text style={styles.title}>{auth.currentUser.email}</Text>
+        <CustomButton
+          title='Log out'
+          onPress={logout}
+          customStyle={{backgroundColor: Colors.GREEN_COLOR}}
+        />
     </View>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  title: {
+    fontFamily: Font.regular,
+    fontSize: wp(4),
+    color: Colors.DARK_COLOR
+  }
+})

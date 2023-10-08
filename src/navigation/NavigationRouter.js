@@ -5,7 +5,7 @@ import { Colors } from '../constants'
 // Auth
 import { OnboardingPage, SingIn, SingUp } from '../screens/auth';
 // Stack
-import { Tab } from '../screens/stack';
+import { Tab, Chat } from '../screens/stack';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +25,7 @@ function NavigationRouter() {
         <Stack.Screen name="singin" component={SingIn} options={{headerShown: false}}/>
         <Stack.Screen name="singup" component={SingUp} options={{headerShown: true, title: ''}}/>
         <Stack.Screen name="home" component={Tab} options={{headerShown: false, title: ''}}/>
+        <Stack.Screen name="chat" component={Chat} options={{headerShown: true, title: ''}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

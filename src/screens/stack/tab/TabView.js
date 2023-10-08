@@ -12,7 +12,7 @@ export default function TabView() {
         <Tab.Navigator
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
-                    if (route.name === 'chat') {
+                    if (route.name === 'user') {
                         return <Fontisto name="hipchat" size={size} color={color} />
                     } else if (route.name === 'settings') {
                         return <Fontisto name="player-settings" size={size} color={color} />
@@ -28,7 +28,7 @@ export default function TabView() {
                 }
             })}
         >
-            <Tab.Screen name="chat" component={Message} options={{tabBarLabel: 'Chats', tabBarLabelStyle: {fontSize: 13, fontFamily: Font.medium}}}/>
+            <Tab.Screen name="user" component={Message} options={{tabBarLabel: 'Chats', tabBarLabelStyle: {fontSize: 13, fontFamily: Font.medium}}}/>
             <Tab.Screen name="settings" component={Settings} options={{tabBarLabel: 'Settings', tabBarLabelStyle: {fontSize: 13, fontFamily: Font.medium}}}/>
         </Tab.Navigator>
     )

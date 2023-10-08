@@ -4,9 +4,11 @@ import { auth, db } from '../../../config/firebaseConfig';
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { Colors, Font } from '../../../constants';
 import {UserCard} from '../../../components';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Message() {
 
+  const navigation = useNavigation();
   const [userList, setUserList]   = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,7 +38,11 @@ export default function Message() {
     )
   }
 
-  const _renderItem = ({ item }) => <UserCard data={item}/>
+  const chatMessageUser = (user) => {
+    navigation.navigate('chat', { data: user });
+  }
+
+  const _renderItem = ({ item }) => <UserCard data={item} onClicked={chatMessageUser}/>
 
   return (
     <View style={styles.container}>
@@ -51,6 +57,6 @@ export default function Message() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.BG_COLOR
+    backgroundColor: Colors.WHITE_COLOR
   }
 })
