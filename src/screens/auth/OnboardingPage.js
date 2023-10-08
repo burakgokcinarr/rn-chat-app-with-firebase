@@ -3,11 +3,33 @@ import { OnboardFlow } from 'react-native-onboard';
 import { Colors, Font } from '../../constants';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useNavigation } from '@react-navigation/native';
+import { useEffect, useState } from 'react';
+import { auth } from '../../config/firebaseConfig';
+import { ActivityIndicator, View } from 'react-native';
 
  export default OnboardingPage = () => {
 
     const { t }      = useTranslation();
     const navigation = useNavigation();
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          navigation.replace('home');
+        } else {
+          setIsLoading(false);
+        }
+      })
+    }, [])  
+
+  if (isLoading) {
+    return (
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <ActivityIndicator size='large' color={Colors.BLACK_COLOR_2} />
+      </View>
+    )
+  }
 
   return (
     <OnboardFlow

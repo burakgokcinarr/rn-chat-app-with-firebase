@@ -1,12 +1,13 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { Font, Colors } from '../../constants'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useNavigation } from '@react-navigation/native';
 import { CustomInput, CustomButton } from '../../components';
 import { AntDesign, Octicons, Entypo } from '@expo/vector-icons';
-import { auth } from '../../config/firebaseConfig';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from '../../config/firebaseConfig';
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { collection, addDoc } from 'firebase/firestore';
 
 export default function SingUp() {
 
@@ -19,11 +20,29 @@ export default function SingUp() {
     createUserWithEmailAndPassword(auth, mail, password)
     .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user)
+        // User Detail Update
+        updateProfile(user, {
+          displayName: name
+        }).then((data) => {
+          writeUserData(user.uid);
+        })
     })
     .catch((error) => {
         alert(error)
     });
+  }
+
+  const writeUserData = async(userId) => {
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        userId: userId,
+        email: mail,
+        name: name
+      });
+      console.log("Create User written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   }
 
   return (

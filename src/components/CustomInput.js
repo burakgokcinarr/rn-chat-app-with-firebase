@@ -3,7 +3,7 @@ import React from 'react'
 import { Colors, Font } from '../constants';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-export default function CustomInput({ placeholderText = "", setText = null, icon = true, secure= false }) {
+export default function CustomInput({ placeholderText = "", setText = null, icon = true, secure= false, type = 'default' }) {
   return (
     <View style={styles.inputContainer}>
       { icon }
@@ -14,7 +14,8 @@ export default function CustomInput({ placeholderText = "", setText = null, icon
         onChangeText={setText}
         secureTextEntry={secure}
         autoCapitalize="none"
-        keyboardType="default"
+        keyboardType={type}
+        textContentType='oneTimeCode'
       />
     </View>
   )
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: hp(5),
+    width: wp(60),
     padding: 5,
     color: Colors.WHITE_COLOR,
     fontFamily: Font.regular,

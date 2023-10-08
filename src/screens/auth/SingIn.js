@@ -6,16 +6,24 @@ import { useNavigation } from '@react-navigation/native';
 import { CustomInput, CustomButton } from '../../components';
 import { AntDesign, Octicons } from '@expo/vector-icons';
 import { auth } from '../../config/firebaseConfig';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function SingIn() {
 
-  const navigation = useNavigation();
+  const navigation              = useNavigation();
   const [mail, setMail]         = useState(null);
   const [password, setPassword] = useState(null)
 
   const onSingIn = () => {
-    
+    if (mail != '' && mail != null) {
+      signInWithEmailAndPassword(auth, mail, password).then((userCredential) => {
+        navigation.navigate('home');
+      }).catch((err) => {
+        alert(err);
+      })
+    } else {
+      alert("Please check your E-Mail and/or Password.")
+    }
   }
 
   const onSingUp = () => {
@@ -29,7 +37,7 @@ export default function SingIn() {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        <CustomInput placeholderText='E-Posta' setText={setMail} icon={<AntDesign name="mail" size={wp(5)} color={Colors.WHITE_COLOR} />}/>
+        <CustomInput placeholderText='E-Posta' setText={setMail} icon={<AntDesign name="mail" size={wp(5)} color={Colors.WHITE_COLOR} />} type='email-address'/>
         <CustomInput placeholderText='Şifre' setText={setPassword} icon={<Octicons name="key" size={wp(5)} color={Colors.WHITE_COLOR} />} secure={true}/>
         <TouchableOpacity onPress={forgotPassword} style={{alignSelf: 'flex-end', marginHorizontal: wp(2)}}>
           <Text style={styles.account}>Şifrenizi mi unuttunuz?</Text>
